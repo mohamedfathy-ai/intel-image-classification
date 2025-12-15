@@ -1,0 +1,45 @@
+# ===============================
+# Intel Image Classification Config
+# ===============================
+
+# Dataset paths (Kaggle default)
+data:
+  train_dir: /kaggle/input/intel-image-classification/seg_train/seg_train
+  test_dir: /kaggle/input/intel-image-classification/seg_test/seg_test
+  pred_dir: /kaggle/input/intel-image-classification/seg_pred/seg_pred  # optional
+
+# Image settings
+image:
+  img_size: 224
+  normalize:
+    mean: [0.485, 0.456, 0.406]
+    std:  [0.229, 0.224, 0.225]
+
+# Training settings
+training:
+  batch_size: 32
+  epochs: 10
+  learning_rate: 0.0001
+  optimizer: adam
+  loss: cross_entropy
+  fine_tune_mode: fine_tune   # feature_extraction | fine_tune | full
+  patience: 5
+  num_workers: 2
+
+# Scheduler
+scheduler:
+  type: ReduceLROnPlateau
+  mode: min
+  factor: 0.1
+  patience: 2
+  min_lr: 0.0000001
+
+# Output directories
+output:
+  base_dir: outputs
+  checkpoints: checkpoints
+  figures: figures
+  reports: reports
+
+# Reproducibility
+seed: 42
