@@ -1,5 +1,5 @@
 torch
 torchvision
 tqdm
-matplotlib
+matplotlib 
 scikit-learn
